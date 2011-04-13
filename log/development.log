@@ -1,0 +1,61 @@
+  [4;36;1mSQL (0.3ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mselect sqlite_version(*)[0m
+  [4;36;1mSQL (88.4ms)[0m   [0;1mCREATE TABLE "schema_migrations" ("version" varchar(255) NOT NULL) [0m
+  [4;35;1mSQL (64.6ms)[0m   [0mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+Migrating to CreateNotes (20110413024740)
+  [4;36;1mSQL (0.3ms)[0m   [0;1mCREATE TABLE "notes" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "body" text, "created_at" datetime, "updated_at" datetime) [0m
+  [4;35;1mSQL (0.1ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('20110413024740')[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1m SELECT name
+ FROM sqlite_master
+ WHERE type = 'table' AND NOT name = 'sqlite_sequence'
+[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mPRAGMA index_list("notes")[0m
+
+
+Processing NotesController#index (for 127.0.0.1 at 2011-04-12 21:49:17) [GET]
+  [4;36;1mNote Load (0.4ms)[0m   [0;1mSELECT * FROM "notes" [0m
+Rendering template within layouts/notes
+Rendering notes/index
+Completed in 24ms (View: 20, DB: 0) | 200 OK [http://localhost/notes]
+
+
+Processing NotesController#new (for 127.0.0.1 at 2011-04-12 21:49:36) [GET]
+Rendering template within layouts/notes
+Rendering notes/new
+Completed in 11ms (View: 7, DB: 0) | 200 OK [http://localhost/notes/new]
+
+
+Processing NotesController#create (for 127.0.0.1 at 2011-04-12 21:49:44) [POST]
+  Parameters: {"commit"=>"Create", "authenticity_token"=>"8ILSaFWJpS2pH2cKA7vgaS8IzyiVhL+GkCWuQMrGmqk=", "note"=>{"body"=>"Blah Blah Blah\r\n"}}
+  [4;35;1mNote Create (0.4ms)[0m   [0mINSERT INTO "notes" ("created_at", "body", "updated_at") VALUES('2011-04-13 02:49:44', 'Blah Blah Blah
+', '2011-04-13 02:49:44')[0m
+Redirected to http://localhost:3000/notes/1
+Completed in 88ms (DB: 0) | 302 Found [http://localhost/notes]
+
+
+Processing NotesController#show (for 127.0.0.1 at 2011-04-12 21:49:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mNote Load (0.2ms)[0m   [0;1mSELECT * FROM "notes" WHERE ("notes"."id" = 1) [0m
+Rendering template within layouts/notes
+Rendering notes/show
+Completed in 10ms (View: 6, DB: 0) | 200 OK [http://localhost/notes/1]
+
+
+Processing NotesController#index (for 127.0.0.1 at 2011-04-12 21:52:51) [GET]
+  [4;35;1mNote Load (0.7ms)[0m   [0mSELECT * FROM "notes" [0m
+Rendering template within layouts/notes
+Rendering notes/index
+Completed in 12ms (View: 5, DB: 1) | 200 OK [http://localhost/]
